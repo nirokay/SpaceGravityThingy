@@ -125,22 +125,6 @@ public void gui() {
   text("Speed: " + round(10*ship.speed(ship)), 2*width/8, height - 2*varText);
 }
 
-class Particle {
-
-  private float y, x; //Position
-  private float s; //Size
-  //private int ammount;
-
-  Particle(float tempX, float tempY, float tempS) {
-    x = tempX;
-    y = tempY;
-    s = tempS;
-  }
-
-  public void display() {
-  }
-}
-
 class Planet {
   private float plaX, plaY; //Position
   private float plaR; //Radius
@@ -259,9 +243,6 @@ class Spaceship {
     } else {
       return false;
     }
-  }
-
-  public void heat() {
   }
 }
   public void settings() {  size(1200, 675);  smooth(8); }
