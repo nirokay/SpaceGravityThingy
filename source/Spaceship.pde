@@ -96,7 +96,3 @@ class Spaceship {
       return false;
     }
   }
-
-  void heat() {
-  }
-}
