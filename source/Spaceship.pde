@@ -1,6 +1,6 @@
-class Spaceship {
+public class Spaceship {
   private float x, y; //Position
-  private float speedX, speedY, speedLimit; //Speed
+  private float speedX, speedY; //Speed
   private float sizeSS; //Size
 
   private float speedChange = 0.2;
@@ -15,10 +15,26 @@ class Spaceship {
 
 
   void display() {
-    //Search Bubble
-    fill(255, 255, 255, 50);
-    noStroke();
-    ellipse(x, y, sizeSS * distance, sizeSS * distance);
+    if (scorebubble_toggle.state == 1) {
+      //Score Bubble
+      fill(255, 255, 255, 50);
+      noStroke();
+      ellipse(x, y, sizeSS * distance, sizeSS * distance);
+
+      if (screenwrap_toggle.state == 1) {
+        //Mirror Sides
+        fill(255, 255, 255, 50);
+        ellipse(x + width, y, sizeSS * distance, sizeSS * distance);
+        ellipse(x, y + 7*height/8, sizeSS * distance, sizeSS * distance);
+        ellipse(x - width, y, sizeSS * distance, sizeSS * distance);
+        ellipse(x, y - 7*height/8, sizeSS * distance, sizeSS * distance);
+        //Mirror Diagonals
+        ellipse(x + width, y + 7*height/8, sizeSS * distance, sizeSS * distance);
+        ellipse(x - width, y + 7*height/8, sizeSS * distance, sizeSS * distance);
+        ellipse(x - width, y - 7*height/8, sizeSS * distance, sizeSS * distance);
+        ellipse(x + width, y - 7*height/8, sizeSS * distance, sizeSS * distance);
+      }
+    }
 
     //Spaceship
     fill(200, 50, 50);
@@ -26,6 +42,7 @@ class Spaceship {
     stroke(255);
     ellipse(x, y, sizeSS, sizeSS);
   }
+
 
   void update() {
     x = x + speedX;
@@ -64,8 +81,8 @@ class Spaceship {
   void reset() {
     if (keyPressed) {
       if (key == 'r') {
-        x = 20;
-        y = 20;
+        x = width/8;
+        y = height/2;
         speedX = 0;
         speedY = 0;
 
@@ -75,10 +92,12 @@ class Spaceship {
     }
   }
 
+  //Speed Calculator
   float speed(Spaceship name) {
     return sqrt((name.speedX*name.speedX)/2 + (name.speedY*name.speedY)/2);
   }
 
+  //Collision
   boolean collision(Planet object) {
     float d = dist(x, y, object.plaX, object.plaY);
     if (d < sizeSS/2 + object.plaR/2) {
@@ -88,6 +107,7 @@ class Spaceship {
     }
   }
 
+  //Score Range
   boolean near(Planet object) {
     float d = dist(x, y, object.plaX, object.plaY);
     if (d < sizeSS/2 * distance + object.plaR/2 && d > sizeSS/2 + object.plaR/2) {
@@ -96,3 +116,8 @@ class Spaceship {
       return false;
     }
   }
+
+  //Heat System
+  void heat() {
+  }
+}
