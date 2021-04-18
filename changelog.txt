@@ -1,5 +1,55 @@
------ NEW -----
 
- - Gravity
- - Title Screen
- - Settings Screen
+   SpaceGravityThingy Changelog Version 0.9.2
+                    by Niro
+
+
+----- ----- -----   REWORKED   ----- ----- -----
+
+ * Gravity:
+    - now behaves more according to real life
+      physics
+    - restricted to coloured gravity circles
+      (circles can be turned off in settings,
+      gravity still remains)
+
+ * Titlescreen:
+    - beautifuller and simply better!
+    - options can now be opeened from ingame
+      and the titlescreen
+
+ * Movement:
+    - now no longer restricted to a space of
+      1200x675 pixels!
+      fly whereever you please!
+    - removed screenwrapping
+    - camera follows the player
+    - lowered speed gain via controls
+      (gravity is stronger)
+
+
+
+----- ----- -----    ADDED    ----- ----- -----
+
+ * Ship Travel Trails:
+    - 500 circles follow the player, that's it
+
+ * Simple Navigation Help:
+    - shows all planets and their directions
+      around the player (can be turned off in
+      settings)
+
+ * Orbit Enter Welcome Message:
+    - informs you what planet you entered an
+      orbit with
+
+ * Pause Button:
+    - no longer the need to click 'a' and 's'!
+
+
+
+----- ----- -----    FIXED    ----- ----- -----
+ * Bugs:
+    - Planet pulling player despite player
+      being crashed
+    - Planet pulling player out of the planet
+      they crashed with and reviving them

@@ -1,8 +1,8 @@
 public class Button {
 
-  private float x, y; //Position
-  private float w; //Width
-  private int state;
+  private float x, y;     // Position
+  private float w;        // Width
+  private int state;      // Memory if activated or not
 
   Button(float tempX, float tempY, float tempW) {
     x = tempX;
@@ -27,7 +27,8 @@ public class Button {
 }
 
 void check(Button button) {
-  if (mousePressed && mouseX >= button.x && mouseX <= button.x+button.w && mouseY >= button.y && mouseY <= button.y+button.w) {
+  if (mousePressed && mouseX >= button.x && mouseX <= button.x+button.w && mouseY >= button.y && mouseY <= button.y+button.w && cooldown <= 0) {
+    cooldown = 20;
     if (button.state == 1) {
       button.state = 0;
     } else {

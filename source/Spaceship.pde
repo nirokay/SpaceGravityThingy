@@ -1,39 +1,31 @@
 public class Spaceship {
-  private float x, y; //Position
-  private float speedX, speedY; //Speed
-  private float sizeSS; //Size
+  private float x = width/2;         // Position
+  private float y = height/2;        // Position
+  private float speedX, speedY;      // Speed
+  private float sizeSS;              // Size
+  private float mass;                // Spaceship Mass
 
-  private float speedChange = 0.2;
+  private float speedChange = 0.02;  // Acceleration
+  private int i = 0;
 
-  Spaceship(float tempX, float tempY, float tempSize, float tempSpeedX, float tempSpeedY) {
+  Spaceship(float tempX, float tempY, float tempSize, float tempM, float tempSpeedX, float tempSpeedY) {
     x = tempX;
     y = tempY;
     speedX = tempSpeedX;
     speedY = tempSpeedY;
     sizeSS = tempSize;
+    mass = tempM;
   }
 
 
   void display() {
+    pathCalc();
+    pathDraw();    
     if (scorebubble_toggle.state == 1) {
       //Score Bubble
       fill(255, 255, 255, 50);
       noStroke();
       ellipse(x, y, sizeSS * distance, sizeSS * distance);
-
-      if (screenwrap_toggle.state == 1) {
-        //Mirror Sides
-        fill(255, 255, 255, 50);
-        ellipse(x + width, y, sizeSS * distance, sizeSS * distance);
-        ellipse(x, y + 7*height/8, sizeSS * distance, sizeSS * distance);
-        ellipse(x - width, y, sizeSS * distance, sizeSS * distance);
-        ellipse(x, y - 7*height/8, sizeSS * distance, sizeSS * distance);
-        //Mirror Diagonals
-        ellipse(x + width, y + 7*height/8, sizeSS * distance, sizeSS * distance);
-        ellipse(x - width, y + 7*height/8, sizeSS * distance, sizeSS * distance);
-        ellipse(x - width, y - 7*height/8, sizeSS * distance, sizeSS * distance);
-        ellipse(x + width, y - 7*height/8, sizeSS * distance, sizeSS * distance);
-      }
     }
 
     //Spaceship
@@ -43,22 +35,9 @@ public class Spaceship {
     ellipse(x, y, sizeSS, sizeSS);
   }
 
-
   void update() {
     x = x + speedX;
     y = y + speedY;
-
-    if (x > width) {
-      x = 0;
-    } else if (x < 0) {
-      x = width;
-    }
-
-    if (y > 7*height/8) {
-      y = 0;
-    } else if (y < 0) {
-      y = 7*height/8;
-    }
   }
 
   void controlls() {
@@ -81,13 +60,17 @@ public class Spaceship {
   void reset() {
     if (keyPressed) {
       if (key == 'r') {
-        x = width/8;
+        x = width/2;
         y = height/2;
         speedX = 0;
         speedY = 0;
 
         lives = 3;
         score = 0;
+
+        //Reset Player State "Memory"
+        debrisActive = false;
+        playerDeath = false;
       }
     }
   }
@@ -117,7 +100,30 @@ public class Spaceship {
     }
   }
 
-  //Heat System
-  void heat() {
+  //Path
+  void pathCalc() {
+    if (i < pathX.length || i < pathY.length) {
+      println(i);
+      pathX[i] = ship.x;
+      pathY[i] = ship.y;
+      println(pathX[i] + " and " + pathY[i]);
+      i = i +1;
+    }
+    if (i >= pathX.length || i >= pathY.length) {
+      i = 0;
+    }
+  }
+  void pathDraw() {
+    int q;
+    for (q = 0; q < pathX.length || q < pathY.length; q++) {
+      if ((pathX[q] >=  ship.x - width/2 && pathX[q] <= ship.x + width/2) && (pathY[q] >= ship.y - height/2 && pathY[q] <= ship.y + height/2)) {
+        fill(255, 255, 255, 20);
+        noStroke();
+        ellipse(pathX[q], pathY[q], 5, 5);
+      }
+    }
+    if (q >= pathX.length || q >= pathY.length) {
+      q = 0;
+    }
   }
 }

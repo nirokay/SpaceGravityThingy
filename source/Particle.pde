@@ -1,9 +1,9 @@
 public class Particle {
 
-  private float y, x; //Position
-  private float s; //Size
-  private float speedX, speedY; //Speed
-  private float opacity;
+  private float y, x;                // Position
+  private float s;                   // Size
+  private float spX, spY;            // Speed (unsused)
+  private float opacity;             // Opacity
 
   Particle(float tempX, float tempY, float tempS, float tempOp) {
     x = tempX;
