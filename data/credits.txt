@@ -1,0 +1,60 @@
+<Artist>
+<Title>
+<Link>
+<Usage>
+
+----- -----  MUSIC  ----- -----
+
+YSKNYC
+spacetheme
+https://opengameart.org/content/space-theme - no changes made
+(Title Screen Music)
+
+yd
+Another space background track
+https://opengameart.org/content/another-space-background-track - no changes made
+(Ingame Ambient Music 01)
+
+Osmic
+space-ambient
+https://opengameart.org/content/space-ambient - no changes made
+**** UNUSED ****
+
+
+
+
+----- -----   SFX   ----- -----
+dklon
+various alerts
+https://opengameart.org/content/various-alerts - changes made
+(Ingame Alarm sounds)
+
+quboddup
+beep tome sound sfx
+https://opengameart.org/content/beep-tone-sound-sfx - no changes made
+(Ingame Research Collect)
+
+Jesús Lastra
+GUI Sound Effects
+https://opengameart.org/content/gui-sound-effects-4 - changes made
+(Gui sound effects)
+
+Écrivain
+Random SFX
+https://opengameart.org/content/random-sfx - no changes made
+(Random SFX lol)
+
+Sudocolon
+menu rollover
+https://opengameart.org/content/menu-rollover
+(Ingame Research Collection)
+
+NenadSimic
+https://opengameart.org/content/muffled-distant-explosion
+muffled distant explosion
+(Ingame Crash Sound)
+
+
+
+----- ----- GRAPHICS ----- -----
+me lol

@@ -1,0 +1,120 @@
+[
+  {
+    "id": 0,
+    "name": "Kerbin",
+    "desc": "Terrestrial Planet",
+    "mult": 2,
+
+    "red": 39,
+    "green": 93,
+    "blue": 122,
+
+    "poles": 1,
+    "gas": 0,
+    "mountains": 0,
+    "clouds": 2,
+    "terrain": 0,
+
+    "x": -1000,
+    "y": -100,
+    "r": 100,
+    "m": 15,
+    "has_atmosphere": true,
+    "atmos_height": 120,
+    "atmos_density": 0.02
+  },
+  {
+    "id": 1,
+    "name": "Crystallos",
+    "desc": "Ice Planet",
+    "mult": 1,
+
+    "red": 122,
+    "green": 147,
+    "blue": 124,
+
+    "poles": 0,
+    "gas": 0,
+    "mountains": 0,
+    "clouds": 0,
+    "terrain": 0,
+
+    "x": -600,
+    "y": 700,
+    "r": 60,
+    "m": 10,
+    "has_atmosphere": false,
+  },
+  {
+    "id": 2,
+    "name": "Guerros",
+    "desc": "Desert Planet",
+    "mult": 2,
+
+    "red": 186,
+    "green": 106,
+    "blue": 80,
+
+    "poles": 0,
+    "gas": 0,
+    "mountains": 1,
+    "clouds": 1,
+    "terrain": 0,
+
+    "x": 1600,
+    "y": 700,
+    "r": 150,
+    "m": 20,
+    "has_atmosphere": true,
+    "atmos_height": 100,
+    "atmos_density": 0.04
+  },
+  {
+    "id": 3,
+    "name": "Regiis",
+    "desc": "Gas Giant",
+    "mult": 4,
+
+    "red": 160,
+    "green": 24,
+    "blue": 69,
+
+    "poles": 0,
+    "gas": 1,
+    "mountains": 0,
+    "clouds": 0,
+    "terrain": 0,
+
+    "x": 500,
+    "y": -800,
+    "r": 200,
+    "m": 80,
+    "has_atmosphere": true,
+    "atmos_height": 180,
+    "atmos_density": 1.0
+  },
+  {
+    "id": 4,
+    "name": "Olira",
+    "desc": "Swamp Planet",
+    "mult": 2,
+
+    "red": 29,
+    "green": 124,
+    "blue": 69,
+
+    "poles": 0,
+    "gas": 0,
+    "mountains": 0,
+    "clouds": 1,
+    "terrain": 1,
+
+    "x": 3000,
+    "y": -2000,
+    "r": 120,
+    "m": 20,
+    "has_atmosphere": true,
+    "atmos_height": 100,
+    "atmos_density": 0.08
+  }
+]

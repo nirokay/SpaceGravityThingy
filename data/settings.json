@@ -1,0 +1,17 @@
+{
+  "display_orbits": 1,
+  "better_atmosphere": 1,
+
+  "research_radius": 1,
+  "ship_path": 1,
+
+  "ship_navi": 1,
+  "better_navi": 0,
+
+
+  "wasd_controlls": 1,
+
+
+  "music": 1,
+  "sfx": 1
+}

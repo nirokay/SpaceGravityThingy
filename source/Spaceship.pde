@@ -5,8 +5,14 @@ public class Spaceship {
   private float sizeSS;              // Size
   private float mass;                // Spaceship Mass
 
+  private float invFrame;            // Invincibility Frame
+
   private float speedChange = 0.02;  // Acceleration
   private int i = 0;
+  private boolean pathDraw;
+
+  private float researchLimit = 50;  // amount of maximal research "blasts"
+  private float researchCount;       // amount of research "blasts left"
 
   Spaceship(float tempX, float tempY, float tempSize, float tempM, float tempSpeedX, float tempSpeedY) {
     x = tempX;
@@ -18,9 +24,19 @@ public class Spaceship {
   }
 
 
+
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+  //                                       DRAW
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+
   void display() {
-    pathCalc();
-    pathDraw();    
+    if (pathDraw == true && display_path.state == 1) {
+      pathCalc();
+      pathDraw();
+    }
+
     if (scorebubble_toggle.state == 1) {
       //Score Bubble
       fill(255, 255, 255, 50);
@@ -35,95 +51,130 @@ public class Spaceship {
     ellipse(x, y, sizeSS, sizeSS);
   }
 
+
+
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+  //                             PLAYER MOVEMENT / PLAYER INPUT
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+
+  //  Position Update
   void update() {
     x = x + speedX;
     y = y + speedY;
+    if (invFrame > 0) {
+      invFrame = invFrame - 1;
+    }
+    //  "Drag"
+    speedX = speedX*0.999999;
+    speedY = speedY*0.999999;
   }
 
+  //  Control Input
   void controlls() {
-    if (keyPressed && key == CODED) {
-      if (keyCode == UP) {
-        speedY = speedY - speedChange;
+    //  Arrow Keys Controlls
+    if (controlls_wasd.state == 0) {
+      if (keyPressed && key == CODED) {
+        if (keyCode == LEFT) {
+          speedX = speedX - speedChange;
+        } else if (keyCode == RIGHT) {
+          speedX = speedX + speedChange;
+        }
       }
-      if (keyCode == DOWN) {
-        speedY = speedY + speedChange;
+      if (keyPressed && key == CODED) {
+        if (keyCode == UP) {
+          speedY = speedY - speedChange;
+        } else if (keyCode == DOWN) {
+          speedY = speedY + speedChange;
+        }
       }
-      if (keyCode == LEFT) {
-        speedX = speedX - speedChange;
+    }
+    //  WASD Controlls
+    else {
+      if (keyPressed) {
+        if (key == 'a') {
+          speedX = speedX - speedChange;
+        } else if (key == 'd') {
+          speedX = speedX + speedChange;
+        }
       }
-      if (keyCode == RIGHT) {
-        speedX = speedX + speedChange;
+      if (keyPressed) {
+        if (key == 'w') {
+          speedY = speedY - speedChange;
+        } else if (key == 's') {
+          speedY = speedY + speedChange;
+        }
       }
     }
   }
 
+  //  Player Reset
   void reset() {
-    if (keyPressed) {
-      if (key == 'r') {
-        x = width/2;
-        y = height/2;
+    if (keyPressed && key == 'r') {
+        x = base.x;
+        y = base.y;
         speedX = 0;
         speedY = 0;
 
         lives = 3;
         score = 0;
+        researchCount = researchLimit;
 
         //Reset Player State "Memory"
         debrisActive = false;
         playerDeath = false;
-      }
+
+        shieldTimer = 0;
+        debrisTimer = 0;
+        invFrame = 0;
     }
   }
 
-  //Speed Calculator
-  float speed(Spaceship name) {
-    return sqrt((name.speedX*name.speedX)/2 + (name.speedY*name.speedY)/2);
-  }
-
-  //Collision
-  boolean collision(Planet object) {
-    float d = dist(x, y, object.plaX, object.plaY);
-    if (d < sizeSS/2 + object.plaR/2) {
+  boolean mapShow() {
+    if (keyPressed && key == 'm') {
       return true;
     } else {
       return false;
     }
   }
 
-  //Score Range
-  boolean near(Planet object) {
-    float d = dist(x, y, object.plaX, object.plaY);
-    if (d < sizeSS/2 * distance + object.plaR/2 && d > sizeSS/2 + object.plaR/2) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
-  //Path
+
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+  //                                    VISUAL STUFF
+  //  ----------------------------------------------------------------------------------
+  //  ----------------------------------------------------------------------------------
+
+  //  Path Array Saving
   void pathCalc() {
     if (i < pathX.length || i < pathY.length) {
-      println(i);
       pathX[i] = ship.x;
       pathY[i] = ship.y;
-      println(pathX[i] + " and " + pathY[i]);
       i = i +1;
     }
     if (i >= pathX.length || i >= pathY.length) {
       i = 0;
     }
   }
+  //  Path Drawing
   void pathDraw() {
     int q;
     for (q = 0; q < pathX.length || q < pathY.length; q++) {
       if ((pathX[q] >=  ship.x - width/2 && pathX[q] <= ship.x + width/2) && (pathY[q] >= ship.y - height/2 && pathY[q] <= ship.y + height/2)) {
-        fill(255, 255, 255, 20);
+        fill(80);
         noStroke();
-        ellipse(pathX[q], pathY[q], 5, 5);
+        ellipse(pathX[q], pathY[q], 2, 2);
       }
     }
     if (q >= pathX.length || q >= pathY.length) {
       q = 0;
     }
+  }
+
+  //  Speed Calculator  -  GUI
+  float speed(Spaceship name) {
+    return ( sqrt(sq(name.speedX)) + sqrt(sq(name.speedY)) );
   }
 }
