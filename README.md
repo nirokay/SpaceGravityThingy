@@ -10,7 +10,7 @@ The objective is flying close to planets with your small spaceship and gather re
 # Changelog
 (can be seen separately in changelog.txt)
 
---- REWORKED ---
+## REWORKED
 * Score System:
    - now called Research System
    - you get more research the closer you fly to the planet (fly safe though... pls ._.)
@@ -29,7 +29,7 @@ The objective is flying close to planets with your small spaceship and gather re
    - settings stored in a json file, which is been read from at game start (saving isn't possible at this moment so you have to manually edit the json-file to save settings)
 
 
---- ADDED ---
+## ADDED
 * Planet Atmospheres:
    - slow you down drastically if you fly too close
 
@@ -52,7 +52,7 @@ The objective is flying close to planets with your small spaceship and gather re
 * Bugs (probably)
 
 
---- FIXED ---
+## FIXED
 * Bugs:
    - shield and explosion not showing up
    - removed fullscreen option on game window
