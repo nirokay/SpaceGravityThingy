@@ -3,9 +3,20 @@ SpaceGravityThingy is a small Open Source game made in Processing.
 The objective is flying close to planets with your small spaceship and gather research about them! Currently there is no definitive goal other than having fun and build up your highscore.
 (still in development)
 
+
+# How to download/execute
+You will need Java 8 installed for this program to run.
+
+### Windows
+Download the .zip file, unpack it and execute the .exe file
+### Linux
+Download the .zip file, unpack it, open your terminal in the folder and type `./SpaceGravityThingy`. This should start the game.
+
+
 # Controls
 * Movement: can be switched from either wasd or arrow keys (in-game settings)
 * other: if you crash, revert to your base by clicking 'r'
+
 
 # Changelog
 (can be seen separately in changelog.txt)
